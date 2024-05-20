@@ -11,14 +11,13 @@ VERSION = "1.0.1"
 CONFIG_FILE = Path.home() / ".tempclone_config"
 
 ASCII_ART = r"""
- /$$$$$$$$ /$$$$$$$$ /$$      /$$ /$$$$$$$         /$$$$$$  /$$        /$$$$$$  /$$   /$$ /$$$$$$$$
-|__  $$__/| $$_____/| $$$    /$$$| $$__  $$       /$$__  $$| $$       /$$__  $$| $$$ | $$| $$_____/
-   | $$   | $$      | $$$$  /$$$$| $$  \ $$      | $$  \__/| $$      | $$  \ $$| $$$$| $$| $$      
-   | $$   | $$$$$   | $$ $$/$$ $$| $$$$$$$/      | $$      | $$      | $$  | $$| $$ $$ $$| $$$$$   
-   | $$   | $$__/   | $$  $$$| $$| $$____/       | $$      | $$      | $$  | $$| $$  $$$$| $$__/   
-   | $$   | $$      | $$\  $ | $$| $$            | $$    $$| $$      | $$  | $$| $$\  $$$| $$      
-   | $$   | $$$$$$$$| $$ \/  | $$| $$            |  $$$$$$/| $$$$$$$$|  $$$$$$/| $$ \  $$| $$$$$$$$
-   |__/   |________/|__/     |__/|__/             \______/ |________/ \______/ |__/  \__/|________/
+ /$$$$$$$$ /$$$$$$ /$$     /$$ /$$$$$$      /$$$$  /$$      /$$$$$  /$$  /$$ /$$$$$$
+|__  $$__/| $$___/| $$$   /$$$| $$_  $$    /$$_ $$| $$     /$$_  $$| $$ | $$| $$___/
+   | $$   | $$    | $$$$  $$$$| $$ \ $$   | $$ \_/| $$    | $$ \ $$| $$$| $$| $$    
+   | $$   | $$$$  | $$ $$/$ $$| $$$$$$/   | $$    | $$    | $$ | $$| $$$$ $$| $$$$  
+   | $$   | $$_/  | $$  $$| $$| $$___/    | $$    | $$    | $$ | $$| $$ $$$$| $$_/  
+   | $$   | $$$$$$| $$ \/ | $$| $$        |  $$$$/| $$$$$$|  $$$$$/| $$\  $$| $$$$$$
+   |__/   |______/|__/    |__/|__/         \____/ |______/ \_____/ |__/ \__/|______/
 """
 
 def get_config():
@@ -75,7 +74,6 @@ def list_templates():
     page = 1
     while True:
         url = f"{GITHUB_API_URL}/users/{owner}/repos?page={page}&per_page=100"
-        click.echo(f"Fetching URL: {url}")  # Debug output
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
             click.echo(f"Error listing templates: {response.json()}")
@@ -113,7 +111,6 @@ def new_project(new_repo_name):
     page = 1
     while True:
         url = f"{GITHUB_API_URL}/users/{owner}/repos?page={page}&per_page=100"
-        click.echo(f"Fetching URL: {url}")  # Debug output
         response = requests.get(url, headers=headers)
         if response.status_code != 200:
             click.echo(f"Error listing templates: {response.json()}")
@@ -149,7 +146,7 @@ def new_project(new_repo_name):
 
         # Pause and check if the repository is ready
         click.echo('Waiting for the repository to be configured...')
-        time.sleep(5)  # Pause for 5 seconds
+        time.sleep(5)
 
         for _ in range(5):  # Try 5 times
             click.echo(f'Checking repository status: {new_repo_clone_url}')  # Debug output
