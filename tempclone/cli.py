@@ -7,7 +7,7 @@ from pathlib import Path
 import time
 
 GITHUB_API_URL = "https://api.github.com"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 CONFIG_FILE = Path.home() / ".tempclone_config"
 
 ASCII_ART = r"""
