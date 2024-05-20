@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8  # ou outra versão que você esteja usando
+          python-version: 3.9  # Atualize para uma versão compatível, se necessário
 
       - name: Install dependencies
         run: |
